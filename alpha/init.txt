@@ -1,0 +1,228 @@
+// alpha initialization script
+    //stand_sprite = cspr_add('fighter/alpha/stand.png',128,0,1,0,1,22,44);
+    stand_sprite = cspr_add('fighter/alpha/stand.png',23,0,1,0,1,72,100);
+	entry_sprite = cspr_add('fighter/alpha/entry.png',8,1,1,0,1,72,100);
+    sprite_start = stand_sprite
+    mask_sprite = cspr_add('fighter/alpha/mask.png',1,0,1,0,1,45,78);
+	crouch_sprite = cspr_add('fighter/alpha/crouch.png',1,1,1,0,1,45,70);
+    crouch_mask_sprite = cspr_add('fighter/alpha/crouchmask.png',1,0,1,0,1,45,45);
+	taunt_sprite = cspr_add('fighter/alpha/taunt.png',6,1,1,0,1,47,76);
+	
+	walk_sprite = cspr_add('fighter/alpha/walk.png',8,1,1,0,1,52,78);
+    run_sprite = cspr_add('fighter/alpha/run.png',8,1,1,0,1,52,78);
+    jump_sprite = cspr_add('fighter/alpha/jump.png',2,1,1,0,1,56,76);
+    mid_jump_sprite = cspr_add('fighter/alpha/jump2.png',6,1,1,0,1,56,76);
+    fall_sprite = cspr_add('fighter/alpha/fall.png',2,1,1,0,1,56,76);
+	land_sprite = cspr_add('fighter/alpha/land.png',3,1,1,0,1,56,76);
+	shield_sprite = cspr_add('fighter/alpha/shield.png',1,1,1,0,1,57,92);
+	air_dodge_sprite = cspr_add('fighter/alpha/airdodge.png',4,1,1,0,1,57,92); 
+    roll_sprite = cspr_add('fighter/alpha/roll.png',4,1,1,0,1,57,92);
+    flinch_sprite = cspr_add('fighter/alpha/flinch.png',1,1,1,0,1,57,92);
+    flinch2_sprite = cspr_add('fighter/alpha/flinch2.png',1,1,1,0,1,57,92);
+    flinch3_sprite = cspr_add('fighter/alpha/flinch3.png',1,1,1,0,1,57,92);
+	down_sprite = cspr_add('fighter/alpha/getup.png',4,1,1,0,1,57,92);
+    down_attack_sprite = cspr_add('fighter/alpha/getupattack.png',4,1,1,0,1,57,92);
+	
+    win_sprite = taunt_sprite;
+    lose_sprite = cspr_add('fighter/alpha/lose.png',3,1,1,0,1,45,78);
+    swim_sprite = fall_sprite;
+    ladder_sprite = fall_sprite;
+    vehicle_sprite = fall_sprite
+	
+	edge_sprite = cspr_add('fighter/alpha/edge.png',1,1,1,0,1,26,20);
+    edge_climb_sprite = cspr_add('fighter/alpha/edgeclimb.png',1,1,1,0,1,26,20);
+    
+	
+	broken_sprite = cspr_add('fighter/alpha/broken.png',17,1,1,0,1,57,92);
+    ukemi_sprite = cspr_add('fighter/alpha/tech.png',7,1,1,0,1,57,92);
+	
+    
+    jab_sprite = cspr_add('fighter/alpha/jab.png',7,1,1,0,1,69,92);
+    stilt_sprite = cspr_add('fighter/alpha/stilt.png',7,1,1,0,1,69,92);
+    utilt_sprite = cspr_add('fighter/alpha/utilt.png',7,1,1,0,1,69,92);
+	dtilt_sprite = cspr_add('fighter/alpha/dtilt.png',4,1,1,0,1,73,91);
+	dash_attack_sprite = cspr_add('fighter/alpha/dashattack.png',5,0,1,0,1,69,92);
+	
+    fair_sprite = cspr_add('fighter/alpha/nair.png',3,1,1,0,1,69,92);
+    nair_sprite = cspr_add('fighter/alpha/fair.png',4,1,1,0,1,49,72);
+    bair_sprite = cspr_add('fighter/alpha/bair.png',5,0,1,0,1,69,92);
+    uair_sprite = cspr_add('fighter/alpha/uair.png',6,1,1,0,1,69,92);
+    dair_sprite = cspr_add('fighter/alpha/dair.png',3,1,1,0,1,69,92);	
+
+    ssmash_sprite = cspr_add('fighter/alpha/ssmash.png',10,1,1,0,1,69,92);
+    usmash_sprite = cspr_add('fighter/alpha/usmash.png',7,1,1,0,1,56,76);
+    dsmash_sprite = cspr_add('fighter/alpha/dsmash.png',4,1,1,0,1,72,100);
+	
+	
+    b_sprite = cspr_add('fighter/alpha/b.png',12,1,1,0,1,57,92);
+    upb_sprite = cspr_add('fighter/alpha/upb.png',3,0,1,0,1,32,53);
+	sideb_sprite = cspr_add('fighter/alpha/sideb.png',3,0,1,0,1,47,58);
+    downb_sprite = cspr_add('fighter/alpha/downb.png',4,1,1,0,1,69,92);
+	downb_possessed_sprite = cspr_add('fighter/alpha/downb2.png',11,0,1,0,1,57,92);
+	hanyuu_sprite = cspr_add('fighter/alpha/hanyuu.png',4,1,1,0,1,57,92);
+	bernkastel_sprite = cspr_add('fighter/alpha/bernkastel.png',6,1,1,0,1,57,92);
+	projectile_sprite = cspr_add('fighter/alpha/projectile.png',1,1,1,0,1,14,3);
+	spray_sprite = cspr_add('fighter/alpha/spray.png',16,1,1,0,1,0,102);
+	blast_sprite = cspr_add('fighter/alpha/blast.png',10,1,1,0,1,146,73);
+	beam_sprite = cspr_add('fighter/alpha/beam.png',25,1,1,0,1,14,64);
+		
+	final_smash_sprite = b_sprite
+    hanyuu_FS_sprite = cspr_add('fighter/alpha/hanyuuFS.png',5,1,1,0,1,57,92);
+    
+
+
+    grab_sprite = jab_sprite;
+    hold_sprite = cspr_add('fighter/alpha/hold.png',1,1,1,0,1,69,92);
+    pummel_sprite = jab_sprite;
+    fthrow_sprite = jab_sprite;
+    bthrow_sprite = bair_sprite;
+    uthrow_sprite = usmash_sprite;
+    dthrow_sprite = b_sprite;
+	
+	item_down_sprite = crouch_sprite;
+	item_forward_sprite = jab_sprite;
+    item_up_sprite = jab_sprite;
+    item_heavy_sprite = shield_sprite;
+    item_swing_sprite = utilt_sprite;
+    item_swing_frame = 1;
+    hammer_swing_frame = 0;
+    item_shoot_sprite = stilt_sprite;
+    item_shoot_frame = 2;
+	
+    distancia_pinchos = 60;
+    fase_apuntado = 0;   
+    
+    sprite_end = ukemi_sprite
+	
+	
+    jab_script = char_jab;
+    stilt_script = char_stilt;
+    utilt_script = char_utilt;
+    dtilt_script = char_dtilt;
+    nair_script = char_nair;
+    fair_script = char_fair;
+    bair_script = char_bair;
+    uair_script = char_uair;
+    dair_script = char_dair;
+    dash_attack_script = char_dash_attack;
+    b_script = char_b;
+    upb_script = char_upb;
+    sideb_script = char_sideb;
+    smashb_script=sideb_script;
+    //cape_script = char_cape;
+    downb_script = char_downb;
+    //fireball_script = char_fireball;
+    ssmash_script=char_ssmash;
+    usmash_script=char_usmash;
+    dsmash_script=char_dsmash;
+    down_attack_script = char_down_attack;
+    edge_attack_script = char_edge_attack;
+    edge_roll_script = char_edge_roll;
+    edge_jump_script = char_edge_jump;
+    grab_script = char_grab;
+    hold_script = char_hold;
+    fthrow_script = char_fthrow;
+    bthrow_script = char_bthrow;
+    uthrow_script = char_uthrow;
+    dthrow_script = char_dthrow;
+    final_smash_script = char_final_smash;
+    taunt_script = char_taunt;
+    entry_script = char_entry;
+    win_script = char_win;
+    lose_script = char_lose;
+    step_script = char_step;
+	indicador_downb = char_custom6
+    jump_sound = sound_add("fighter/alpha/jump.wav",0,1);
+    sound_start = jump_sound
+    mid_jump_sound = jump_sound;
+
+    attack_sound1 = sound_add("fighter/alpha/swish.wav",0,1);
+    attack_sound2 = sound_add("fighter/alpha/swish2.wav",0,1);
+    attack_sound3 = sound_add("fighter/alpha/swish3.wav",0,1);
+    final_smash_sound1 = sound_add("fighter/alpha/zoom1.wav",0,1);
+    final_smash_sound2 = sound_add("fighter/alpha/zoom2.wav",0,1);
+
+    mid_jump_voice = sound_add("fighter/alpha/alpha attack.wav",0,1);
+    sound_mute = mid_jump_voice
+	b_voice = sound_add("fighter/alpha/rika smash.wav",0,1);
+    upb_voice = sound_add("fighter/alpha/rika smash.wav",0,1);
+	sideb_voice = sound_add("fighter/alpha/rika smash.wav",0,1);
+    downb_voice = sound_add("fighter/alpha/rika smash.wav",0,1);
+    usmash_voice = sound_add("fighter/alpha/rika smash.wav",0,1);
+	smash_voice = sound_add("fighter/alpha/rika smash.wav",0,1);
+	dsmash_voice = sound_add("fighter/alpha/rika smash.wav",0,1);
+	alpha_hanyuu_voice = sound_add("fighter/alpha/hanyuu.wav",0,1);
+	hanyuu_voice = sound_add("fighter/alpha/alpha hanyuu.wav",0,1);
+	hanyuu_FS_voice = sound_add("fighter/alpha/rika hanyuu beam.wav",0,1);
+	bernkastel_voice = sound_add("fighter/alpha/rika bernkastel.wav",0,1);
+	
+    attack_voice1 = sound_add("fighter/alpha/rika attack.wav",0,1);
+    attack_voice2 = sound_add("fighter/alpha/rika attack2.wav",0,1);
+    attack_voice3 = sound_add("fighter/alpha/rika attack3.wav",0,1);
+    attack_voice4 = sound_add("fighter/alpha/rika attack4.wav",0,1);
+    starko_voice = sound_add("fighter/alpha/rika hit.wav",0,1);
+    fly_voice1 = sound_add("fighter/alpha/rika hit.wav",0,1);
+    fly_voice2 = sound_add("fighter/alpha/rika hit2.wav",0,1);
+    die_voice1 = sound_add("fighter/alpha/rika die.wav",0,1);
+    die_voice2 = sound_add("fighter/alpha/rika die2.wav",0,1);;
+    sound_end = die_voice1
+	entry_voice = sound_add("fighter/alpha/rika intro.wav",0,1);
+	taunt_voice = sound_add("fighter/alpha/rika nipah.wav",0,1);
+    //sound_volume(attack_voice1,0.8);
+    //sound_volume(attack_voice2,0.8);
+    //sound_volume(attack_voice3,0.8);
+    //sound_volume(attack_voice4,0.8);
+    weight = 0.70;
+    grav = 0.35;
+    max_jumps=3;
+    walk_speed = 2.1;
+    run_speed = 8.2;
+    run_start_speed = 5.1;
+    run_accel = 0.90
+    jumptimer = 1
+    jump_speed = 7.55;
+    mid_jump_speed = 6.8;
+    short_hop_speed = 2.9;
+    air_speed = 2.9;
+    fall_speed = 2.5;
+    fast_fall_multipler = 2.5;
+    air_accel = 0.35;
+    airdash_speed = 8;
+    fric = 0.90;
+    points = 0;
+    kos = 0;
+    falls = 0;
+    air = 0;
+    state_type = "enter";
+    attack_type = "none";
+    time = 90;
+    timer = 0;
+    timer_speed = 1;
+    facing = 0;
+    xsize = 0.8;
+    ysize = 0.8;
+    smash_power_gain = 0.975
+    image_yscale = ysize;
+    moveright = 0; moveleft = 0; moveup = 0; movedown = 0; attacking =0; movejump = 0;
+    hitby = 0;
+    mask_index = stand_sprite;
+    ai_attack_script = char_ai;
+    held_item=-1
+    smash_charge_sound = 0
+    ability = "wheel"
+    walkstopspeed = 0.85
+    ranged_attacks = 4
+    ranged_attack_types[0] = "upb"
+    ranged_attack_types[1] = "upb"
+    ranged_attack_types[2] = "downb"
+    ranged_attack_types[3] = "downb"
+    scancel_type[0]=0
+    scancel_type[1]=0
+    scancel_type[2]=1
+    scancel_type[3]=1
+    scancel_type[4]=0
+    max_attack_dist = 55
+    special_land_time = 13
+	cantusedownb = 0
+// Variable para guardar la distancia del ataque de Alpha
+

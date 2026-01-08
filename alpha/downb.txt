@@ -1,0 +1,106 @@
+// === INICIO ===
+// Se ejecuta al pulsar la combinación de botones
+if (state_type == "stand" || state_type == "run" || state_type == "crouch" || state_type == "jump") {
+    hspeed = 0;
+    vspeed = 0;
+    state_type = "air_attack";
+    attack_type = "downb";
+    image_speed = 0;
+    sprite_index = downb_sprite;
+    image_index = 0;
+    timer = 0;
+    time = 80;
+    
+    // Variables personalizadas para este ataque
+    distancia_pinchos = 60; // Distancia inicial
+    fase_apuntado = 1;      // 1 = Apuntando, 0 = Ejecutando
+}
+
+// === EJECUCIÓN ===
+if (timer < time) {
+    state_type = "air_attack"; // Forzar estado para evitar cancelaciones accidentales
+
+    // ---------------------------------------------------------
+    // FASE 1: APUNTADO (Incluye Paso 1 y Paso 2)
+    // ---------------------------------------------------------
+    if (fase_apuntado == 1) {
+        // MANTENER EN ESPERA:
+        // Usamos un bucle pequeño (0 a 10) en lugar de fijarlo en 5.
+        // Esto permite que 'timer mod 10' funcione para el indicador.
+        if (timer > 9) {
+            timer = 0;
+        }
+
+        // MOVER OBJETIVO (Flechas Derecha/Izquierda)
+        if (moveright) {
+            distancia_pinchos = distancia_pinchos + 4;
+        }
+        if (moveleft) {
+            distancia_pinchos = distancia_pinchos - 4;
+        }
+
+        // --- PASO 2: INDICADOR SIMPLE ---
+        // Crea un efecto de polvo para ver dónde caerá el ataque
+        // Requiere que 'obj_dust_effect' exista en tu juego (si falla, cámbialo por 'obj_dust' u otro)
+		if (timer == 0) { 
+            var duster;
+            // CAMBIO: Borré la parte de " * (1 - facing * 2)"
+            // Ahora usa la distancia directa, igual que el ataque
+            duster = instance_create(x + distancia_pinchos, y, obj_dust_effect);
+            duster.image_xscale = 0.5;
+            duster.image_yscale = 0.5;
+        }
+
+        // CONFIRMAR ATAQUE (Botón de ataque)
+        if (attacking) {
+            fase_apuntado = 0;          // Salir del modo apuntado
+            timer = 10;                 // Saltar al frame 10 para iniciar animación
+            image_index = 1;
+            sound_play(attack_sound1);
+            attacking = 0;              // Resetear input para no atacar doble
+        }
+    }
+
+    // ---------------------------------------------------------
+    // FASE 2: ANIMACIÓN Y GOLPE (Solo si ya confirmaste)
+    // ---------------------------------------------------------
+    if (fase_apuntado == 0) {
+        // Control manual de la animación
+        if (timer == 10) image_index = 1;
+        if (timer == 15) image_index = 2;
+        if (timer == 20) image_index = 3;
+
+        // Sonido de la voz
+        if (timer == 12) {
+            sound_play(downb_voice);
+        }
+
+        // FASE 3: PINCHOS (Multi-hit)
+        // Crea hitboxes repetidamente entre el frame 25 y 52
+        if (timer >= 25 && timer <= 52) {
+            if (timer mod 3 == 0) {
+                // Nota: Asegúrate de que 'create_hitbox2' es el script correcto en tu engine.
+                // Si el juego crashea, prueba cambiando 'create_hitbox2' por 'create_hitbox' o 'create_projectile'
+                create_hitbox2(2, 90, 4, 0, 2, 2, kick1, obj_spark_slash2,
+                              1.2, 2.0, distancia_pinchos * (1 - facing * 2), 0,
+                              self.id, 3, 1);
+            }
+        }
+
+        // FASE 4: GOLPE FINAL (Explosión)
+        if (timer == 55) {
+            create_hitbox2(12, 85, 7, 6.5, 15, 10, punch4, obj_spark_explode1,
+                          1.5, 2.5, distancia_pinchos * (1 - facing * 2), 0,
+                          self.id, 8, 2);
+            sound_play(explode1); // Asegúrate de que 'explode1' está definido en init.txt, si no usa 'sound_play(attack_sound3)' o similar
+        }
+    }
+}
+
+// === FINALIZAR ===
+if (timer >= time - 1) {
+    state_type = "stand";
+    attack_type = "none";
+    timer = 0;
+    time = -1;
+}

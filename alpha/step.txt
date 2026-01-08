@@ -1,0 +1,2 @@
+if cantusedownb > 0
+cantusedownb -=1
