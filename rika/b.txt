@@ -1,0 +1,51 @@
+if state_type = "jump" || state_type = "stand" || state_type = "run" || state_type = "crouch" {
+        state_type = "air_attack"
+        attack_type = "b"
+        image_speed = 0
+        sprite_index = b_sprite
+        image_index=0
+        timer = 0
+        time = 60
+		hspeed = 0
+}
+
+if ( timer < time )
+    {
+    switch ( timer )
+    {
+	case 5: image_index = 1; break;
+	case 10: image_index = 2; break;
+	case 15: image_index = 3; break;
+	case 20: image_index = 4; break;
+	case 25: image_index = 5; break;
+	case 30: image_index = 6; break;
+	case 35: image_index = 7; break;
+	case 40: image_index = 8; break;
+	case 45: image_index = 9; break;
+	case 50: image_index = 10; break;
+	case 55: image_index = 11; break;
+    }
+	if timer = 1
+	     sound_play(b_voice);
+    if timer = 15 || timer = 16 || timer = 17 || timer = 14{
+	choseny = choose(20,22,24,26,28,30,32,34,36,38,40)
+	chosenx = choose(30,25,20,15,10,5,0,-5,-10,-15,-20-25,-30)
+	create_projectile (3,60+facing*60,5.4,2,12,8,slash2,obj_spark_slash2,1.0,1.0,chosenx,choseny,self.id,150,char_custom1);
+    proj.sprite_index = projectile_sprite;
+    proj.size = size;
+	proj.facing=facing
+	proj.scale = scale
+    }
+  
+  }
+
+
+if timer >= time-2 && state_type != "flinch" && state_type != "air_flinch" {
+    attack_type = "none";
+    if air > 0
+        state_type = "jump";
+    else
+        state_type = "stand";
+    timer = 0;
+    time =-1;
+}
